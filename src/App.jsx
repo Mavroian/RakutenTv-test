@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import store from './store/store';
 import Header from './components/Header/Header';
 import MovieListContainer from './components/Movies/MoviesList-Container/MoviesListContainer'
+import Slider from './components/Slider/Slider'
 import { Provider } from 'react-redux';
 import './app.scss'
 
@@ -40,13 +41,15 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <h1>Welcome to RacutenTV!</h1>
                 <Header />
+                <Slider/>
+                <div className="movies-lists">
                 {
                     this.state.sections.map((section, index) => (
-                        <MovieListContainer key={index} id={section} />
+                        <MovieListContainer key={index} index={index} id={section} />
                     ))
                 }
+                </div>
             </div>
 
         )

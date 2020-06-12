@@ -1,0 +1,52 @@
+li {
+  padding: 10px 0;
+}
+
+button {
+  font-size: 30px;
+  margin-right: 30px;
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  float: right;
+}
+
+/* Class */
+.navBar {
+  width: 100%;
+  background-color: #0000;
+  color: white;
+  padding: 10px;
+  
+}
+.navBar ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navBar svg {
+  position: absolute;
+}
+
+.show-nav {
+  height: 120px;
+}
+
+/* Media screen size */
+@media screen and (min-width: 768px) {
+  button {
+      display: none;
+  }
+
+  .links {
+      height: auto;
+      display: flex;
+  }
+
+  li {
+      padding: 0 15px;
+  }
+}

@@ -1,0 +1,47 @@
+.list__item {
+    z-index: 10;
+    display: block;
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 2px;
+    overflow: hidden;
+    transition: opacity .2s ease;
+    will-change: opacity;
+    margin: 0.35rem;
+}
+
+.artwork-ribbons {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: block;
+    padding: 5px 6px;
+    text-align: center;
+    z-index: 5;
+}
+
+.label {
+    background-color: #ffcc00;
+    background-image: none;
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    padding: 3px 4px;
+    font-family: NotoSans-Bold,Arial,sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    border-radius: 2px;
+}
+
+.inactive {
+    display: none;
+    transition: opacity 2s ease-out;
+    opacity: 0;
+}
+
+.active {
+    transition: all 10s linear;
+}
