@@ -7,8 +7,9 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
+    "build-prod": "webpack -p --env production",
     "start-server": "nodemon server/index.js",
-    "start": "npm run build-prod && node server/index.js",
+    "start": "yarn build-prod && node server/index.js",
     "start-dev": "webpack-dev-server --watch"
   },
   "dependencies": {
