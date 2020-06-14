@@ -9,7 +9,7 @@ class MovieSlider extends Component {
     this.state = {
       activeIndex: 0,
       length: 0,
-      images:[
+      images: [
         "https://images-0.wuaki.tv/system/images/4662/original/judy-slider-1590743255-width1400-quality80.jpeg",
         "https://images-3.wuaki.tv/system/images/4754/original/el-escandalo-slider-1591169064-width1400-quality80.jpeg",
         "https://images-0.wuaki.tv/system/images/4661/original/adu-slider-1590743211-width1400-quality80.jpeg",
@@ -20,59 +20,60 @@ class MovieSlider extends Component {
       ]
     };
   }
-componentDidMount(){
-  setInterval(() => {
-    let index = this.state.activeIndex;
-    let length = this.state.images.length;
-  if(index === length -1){
-    index = 0
-  }else if(index < 0 ){
-    index = 0
-  }else{
-    index++
+  componentDidMount() {
+    this.sliderInterval = setInterval(() => {
+      let index = this.state.activeIndex;
+      let length = this.state.images.length;
+      if (index === length - 1) {
+        index = 0
+      } else if (index < 0) {
+        index = 0
+      } else {
+        index++
+      }
+      this.setState({ activeIndex: index })
+    }, 3000);
   }
-  this.setState({activeIndex:index})
-
-    console.log(this.state.activeIndex)
-  }, 3000);
-}
   goToPrevSlide() {
     let index = this.state.activeIndex;
     let length = this.state.images.length;
-    if(index < 1) {
+    if (index < 1) {
       index = length - 1;
     }
     else {
       index--;
     }
-    if(index < 0){
+    if (index < 0) {
       index = 0
     }
-this.setState({
+    this.setState({
       activeIndex: index
     });
   }
-goToNextSlide() {
-  let index = this.state.activeIndex;
-  let length = this.state.images.length;
-  if(index === length - 1) {
-    index = 0
+  goToNextSlide() {
+    let index = this.state.activeIndex;
+    let length = this.state.images.length;
+    if (index === length - 1) {
+      index = 0
+    }
+    else {
+      index++;
+    }
+    if (index > length) {
+      index = 0
+    }
+    this.setState({
+      activeIndex: index
+    });
   }
-  else {
-    index++;
-  }
-  if(index > length){
-    index = 0
-  }
-this.setState({
-        activeIndex: index
-      });
-}
- toogleClass () {
-   const activeIndex = this.state.activeIndex
-   if(activeIndex < 0 ){
+  toogleClass() {
+    const activeIndex = this.state.activeIndex
+    if (activeIndex < 0) {
 
-   }
+    }
+  }
+  componentWillUnmount() {
+    clearInterval(this.sliderInterval)
   }
   render() {
     return (
@@ -82,11 +83,11 @@ this.setState({
             goToPrevSlide={() => this.goToPrevSlide()}
           />
           <div className='slider-text'>
-              {this.state.images.map((img, index)=>(
-                <div className={index === this.state.activeIndex ? 'active' : 'inactive'}>
-                  <img src={img} alt="movie Image"/>
-                </div>
-              ))}
+            {this.state.images.map((img, index) => (
+              <div key={index} className={index === this.state.activeIndex ? 'active' : 'inactive'}>
+                <img src={img} alt="movie Image" />
+              </div>
+            ))}
           </div>
           <RightArrow
             goToNextSlide={() => this.goToNextSlide()}

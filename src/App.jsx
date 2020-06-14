@@ -2,9 +2,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import store from './store/store';
+import { Route, Switch, HashRouter, BrowserRouter } from "react-router-dom"
 import Header from './components/Header/Header';
-import MovieListContainer from './components/Movies/MoviesList-Container/MoviesListContainer'
-import Slider from './components/Slider/Slider'
+import HomePage from './components/Homepage/HomePage'
+import MovieDetails from './components/MovieDetails/MovieDetails'
+import Player from './components/Player/Player'
 import { Provider } from 'react-redux';
 import './app.scss'
 
@@ -40,18 +42,16 @@ class App extends React.Component {
     }
     render() {
         return (
-            <div>
-                <Header />
-                <Slider/>
-                <div className="movies-lists">
-                {
-                    this.state.sections.map((section, index) => (
-                        <MovieListContainer key={index} index={index} id={section} />
-                    ))
-                }
+            <HashRouter basename="/">
+                <div>
+                    <Header />
+                    <Switch>
+                        <Route exact path="/" component={HomePage} />
+                        <Route exact path="/:type/:movie/trailer" component={Player} />
+                        <Route path="/:type/:movie" component={MovieDetails} />
+                    </Switch>
                 </div>
-            </div>
-
+            </HashRouter>
         )
     }
 }
