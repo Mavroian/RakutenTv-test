@@ -9,7 +9,9 @@ const Movie = (props) => {
     .split(' ')
     .join('-')
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\])}[{(]/g, '')
+    .replace(/:/g, '')
   const type = props.movieProps.type
   const ribbon = props.movieProps.images.ribbons[0] ? props.movieProps.images.ribbons[0].name : null
   let baseUrl = props.movieProps.images.artwork
