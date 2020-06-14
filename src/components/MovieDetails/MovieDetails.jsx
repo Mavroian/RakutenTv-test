@@ -62,14 +62,33 @@ class MovieDetails extends Component {
             <div className="details-buy">
               <div className="ver-ahora">
                 <div className="details-price">
-                  <span>Ver Ahora</span>
-                  <span style={{
-                    fontSize: '13px',
-                    display: 'flex',
-                    alignItems: 'center',
-                  }}
-                  >
-                    Desde {movieObj.order_options[0].price} o {movieObj.order_options[0].points.cost}p</span>
+                  {
+                    movieObj.order_options ?
+                      <>
+                        <span>Ver Ahora</span>
+                        <span style={{
+                          fontSize: '13px',
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                        >
+                          Desde {movieObj.order_options[0].price} o {movieObj.order_options[0].points.cost}p
+                        </span>
+                      </>
+                      :
+                      <>
+                        <span> {movieObj.subscription_plans.length > 0 ? movieObj.subscription_plans[0].name : ''}</span>
+                        <span style={{
+                          fontSize: '13px',
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                        >
+                          ¡Prueba gratis!
+                        </span>
+                      </>
+                  }
+
                 </div>
               </div>
               <div className="canjear-cupon">
