@@ -38,8 +38,9 @@ class MovieListContainer extends Component {
   componentDidMount() {
     this._isMounted = true
     const { id } = this.props
+
     try {
-      axios.get(`http://localhost:3000/lists/${id}`)
+      axios.get(`/lists/${id}`)
         .then(response => {
           if (this._isMounted) {
             this.setState({ movies: response.data.data.contents.data })

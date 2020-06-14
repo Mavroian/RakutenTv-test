@@ -12,7 +12,7 @@ class Player extends Component {
   componentDidMount() {
     const { movie, type } = this.props.match.params
     try {
-      axios.post(`http://localhost:3000/${type}/${movie}/trailer`)
+      axios.post(`/${type}/${movie}/trailer`)
         .then(response => {
           this.setState({ streamingUrl: response.data.data.stream_infos[0].url })
         })
